@@ -13,9 +13,11 @@ A Footnote on the purpose of bootstrap.py and autoexec.py:
 The RaspberryPi being used to power the RGB matrix in my setup is running headless with a USB wifi adapter.  Pre-loaded onto the SD card are a number of programs written in python that use the RGB matrix for output (e.g. pong.py)
 In my setup I remote into the RaspberryPi to invoke the programs.
 My network is setup to use DHCP and when the RaspberryPi boots there is potential for it to be assigned a new IP address by the router, so the problem of how to find out the new address without using nmap or logging into the router exists.
-The solution: Get the RaspberryPi to print out its' IP address on boot to the RGB matrix to allow SSH connections for control ... simple.
+The solution: Get the RaspberryPi to print out its' IP address on boot to the RGB matrix to allow SSH connections for control ... simple.  This was achieved by adding the invocation of bootstrap.py to rc.local
 
 As an improvement, so that I can choose which program is invoked automatically (if needed) following bootup I have modified bootstrap.py to call autoexec.py (sorry, DOS background) once it has finished, as a new process with root permissions.  The example shown for autoexec.py is just a stub that proves the mechanism works, but this file could be replaced with any python program.
+
+For information on how to modify rc.local to invoke python scripts when booting refer to the article here: https://www.raspberrypi.org/documentation/linux/usage/rc-local.md
 
 Simple and effective.
 
